@@ -149,7 +149,7 @@ module.exports = {
                 script: series(
                     'nps banner.seed',
                     'nps config',
-                    runFast('./commands/seed.ts')
+                    runFast('./node_modules/typeorm-seeding/dist/cli.js seed')
                 ),
                 description: 'Seeds generated records into the database'
             },
@@ -291,7 +291,7 @@ function run(path) {
 }
 
 function runFast(path) {
-    return `ts-node --transpileOnly ${path}`;
+    return `ts-node ${path}`;
 }
 
 function tslint(path) {

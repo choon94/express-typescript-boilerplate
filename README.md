@@ -328,7 +328,7 @@ The seeds files define how much and how the data are connected with each other. 
 With the second function, accepting your settings defined in the factories, you are able to create different variations of entities.
 
 ```typescript
-export class CreateUsers implements Seed {
+export class CreateUsers implements Seeder {
 
     public async seed(factory: Factory, connection: Connection): Promise<any> {
         await factory(User)({ roles: [] }).createMany(10);
@@ -355,7 +355,7 @@ await factory(User)()
 To deal with relations you can use the entity manager like this.
 
 ```typescript
-export class CreatePets implements SeedsInterface {
+export class CreatePets implements Seeder {
 
     public async seed(factory: FactoryInterface, connection: Connection): Promise<any> {
         const connection = await factory.getConnection();
@@ -381,16 +381,6 @@ The last step is the easiest, just hit the following command in your terminal, b
 ```bash
 yarn start db.seed
 ```
-
-#### CLI Interface
-
-| Command                                              | Description |
-| ---------------------------------------------------- | ----------- |
-| `yarn start "db.seed"`                               | Run all seeds |
-| `yarn start "db.seed --run CreateBruce,CreatePets"`  | Run specific seeds (file names without extension) |
-| `yarn start "db.seed -L"`                            | Log database queries to the terminal |
-| `yarn start "db.seed --factories <path>"`            | Add a different path to your factories (Default: `src/database/`) |
-| `yarn start "db.seed --seeds <path>"`                | Add a different path to your seeds (Default: `src/database/seeds/`) |
 
 ![divider](./w3tec-divider.png)
 
